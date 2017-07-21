@@ -63,4 +63,6 @@ test-out/
 # distribution directory
 dist/
 
+# workspace
+.vscode/
 

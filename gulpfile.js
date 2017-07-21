@@ -27,6 +27,12 @@ var opt = {
       debug: true,
       entries: ['src/main.prod.ts'],
       bundleExternal: false
+    },
+    test: {
+      basedir: '.',
+      debug: true,
+      entries: ['src/client-test.ts'],
+      bundleExternal: false
     }
 };
 
@@ -59,6 +65,22 @@ gulp.task('build:prod', function(cb) {
   ], cb);
 });
 
+gulp.task('build:package', function(cb) {
+  pump([
+    gulp.src('src/package.json'),
+    gulp.dest('dist')
+  ], cb);
+});
+
+// test client
+gulp.task('build:client', function(cb) {
+  pump([
+    browserify(opt.test).plugin(tsify).bundle(),
+    source('client.js'),
+    gulp.dest('dist')
+  ], cb);
+});
+
 // watch browserify changes
 var watcher = watchify(browserify(opt.dev).plugin(tsify));
 
@@ -86,3 +108,5 @@ watcher.on("log", gutil.log);
 // Task Shortcuts:
 //====================================================
 gulp.task('default', ['build:dev']);
+gulp.task('prod', ['build:prod', 'build:package']);
+gulp.task('both', ['prod', 'build:client']);

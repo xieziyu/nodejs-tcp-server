@@ -1,0 +1,16 @@
+{
+  "name": "tcp-server",
+  "version": "0.0.1",
+  "description": "A simple TCP server by nodejs",
+  "main": "app.min.js",
+  "scripts": {
+    "start": "node app.min.js",
+    "dev": "node app.dev.js"
+  },
+  "author": "Xie, Ziyu",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "shortid": "^2.2.8"
+  }
+}

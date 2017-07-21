@@ -12,14 +12,21 @@
     "start": "node dist/app.dev.js",
     "prestart": "npm run build:dev",
     "build:dev": "gulp build:dev",
-    "build": "gulp build:prod",
-    "watch": "gulp watch"
+    "build:client": "gulp build:client",
+    "build:both": "gulp both",
+    "build": "gulp prod",
+    "watch": "gulp watch",
+    "client": "node dist/client.js"
   },
   "author": "Xie, Ziyu",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "shortid": "^2.2.8"
+  },
   "devDependencies": {
     "@types/chai": "^3.4.34",
+    "@types/lodash": "^4.14.70",
     "@types/mocha": "^2.2.32",
     "@types/node": "^6.0.46",
     "@types/sinon": "^1.16.31",
